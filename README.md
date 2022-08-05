@@ -24,10 +24,11 @@ Coordenadora do grupo: [Mylena Santos Moreira](https://github.com/MylenaSM)
 
 Membros do subgrupo:
  * [Davi Xavier](https://github.com/davixavier528)
+ * [Lara Vitória](https://github.com/larav1)
 
 ### Sp 3: Grupo Cronobacter dublinensis
 
-Coordenador do grupo: 
+Coordenador do grupo: [Afonso Martin Melazzo](https://github.com/afonsoufscar)
 
 Membros do subgrupo:
  * [Raquel Santos](https://github.com/arquels7)
