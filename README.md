@@ -16,7 +16,7 @@
 Coordenadora do grupo: Doutoranda [Rafaella Ferraz](https://github.com/RafaellaFerraz)
 
 Membros do subgrupo:
- * Joao Mochiutti
+ * [Joao Mochiutti](https://github.com/j-x-mochiuti-x)
 
 ### Sp 2: Grupo Cronobacter sakazakii
 
@@ -30,6 +30,6 @@ Membros do subgrupo:
 Coordenador do grupo: 
 
 Membros do subgrupo:
- * 
+ * [Raquel Santos](https://github.com/arquels7)
 
 ## Projetos anteriores
