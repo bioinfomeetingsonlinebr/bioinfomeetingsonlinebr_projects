@@ -20,7 +20,7 @@ Membros do subgrupo:
 
 ### Sp 2: Grupo Cronobacter sakazakii
 
-Coordenador do grupo: 
+Coordenadora do grupo: [Mylena Santos Moreira](https://github.com/MylenaSM)
 
 Membros do subgrupo:
  * [Davi Xavier](https://github.com/davixavier528)
