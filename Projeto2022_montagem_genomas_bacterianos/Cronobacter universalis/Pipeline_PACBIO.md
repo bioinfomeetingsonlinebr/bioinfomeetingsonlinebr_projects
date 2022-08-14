@@ -89,3 +89,18 @@ Ir no terminal e baixar via wget:
         ```
         assembly_stats SRR2154343_1.fa > SRR2154343_assembly_stats.txt
         ```
+4. **Análise de qualidade com fastp**
+
+    Referência: https://github.com/OpenGene/fastp
+    
+    Observações:
+    - -i: input
+    - -o: output apos trimagem
+    - --dedup: calcular taxa de deduplicação
+    - -q: phred de qualidade mínimo
+    - --overrepresentation_analysis: calcular overrepresentação
+    - -h: nome do arquivo html que será gerado como relatório
+    
+    ```
+    fastp -i SRR2154343_1.fastq -o out.fastq --dedup -q 15 --overrepresentation_analysis -h fastp.html
+    ```
