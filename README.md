@@ -34,5 +34,6 @@ Coordenador do grupo: [Afonso Martin Melazzo](https://github.com/afonsoufscar)
 
 Membros do subgrupo:
  * [Raquel Santos](https://github.com/arquels7)
+ * [Geovana Daniel](https://github.com/geovanad)
 
 ## Projetos anteriores
