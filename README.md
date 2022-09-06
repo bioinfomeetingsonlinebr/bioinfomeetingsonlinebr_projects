@@ -13,7 +13,7 @@
 
 ### Sp 1: Cronobacter universalis
 
-Coordenadora do grupo: Doutoranda [Rafaella Ferraz](https://github.com/RafaellaFerraz)
+Coordenadora do grupo: Doutoranda [Rafaella Ferraz](https://github.com/RafaellaFerraz) (Genética e Biologia Molecular)
 
 Membros do subgrupo:
  * [Joao Mochiutti](https://github.com/j-x-mochiuti-x)
@@ -22,7 +22,7 @@ Membros do subgrupo:
 
 ### Sp 2: Grupo Cronobacter sakazakii
 
-Coordenadora do grupo: [Mylena Santos Moreira](https://github.com/MylenaSM)
+Coordenadora do grupo: Graduanda [Mylena Santos Moreira](https://github.com/MylenaSM) (Ciências Biológicas)
 
 Membros do subgrupo:
  * [Davi Xavier](https://github.com/davixavier528)
@@ -30,7 +30,7 @@ Membros do subgrupo:
 
 ### Sp 3: Grupo Cronobacter dublinensis
 
-Coordenador do grupo: [Afonso Martin Melazzo](https://github.com/afonsoufscar)
+Coordenador do grupo: Graduando [Afonso Martin Melazzo](https://github.com/afonsoufscar) (Biotecnologia, com ênfase em Genética e Biologia Molecular)
 
 Membros do subgrupo:
  * [Raquel Santos](https://github.com/arquels7)
