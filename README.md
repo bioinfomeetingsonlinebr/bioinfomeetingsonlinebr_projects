@@ -1,39 +1,31 @@
 # bioinfomeetingsonlinebr_projects
 
-## Resumo dos projetos 2022
+Logo atual (2025) foi criado por [@natasha-mikaela](https://github.com/natasha-mikaela)
+
+## Resumo dos projetos 2025
 
 ## Objetivo geral
 
- * Compreender as etapas envolvidas na análise de dados de terceira geração com tecnologia Pacific Biosciences
- * Montar genomas bacterianos
- * Descrever métricas relacionadas à qualidade das montagens geradas
- * Planejar as etapas seguintes do projeto (ano 2023)
+
 
 ## Subgrupos
 
-### Sp 1: Grupo _Cronobacter universalis_
+### BRCA Coders
 
-Coordenadora do grupo: Doutoranda [Rafaella Sousa Ferraz](https://github.com/RafaellaFerraz) (Genética e Biologia Molecular)
-
-Membros do subgrupo:
- * [Joao Mochiutti](https://github.com/j-x-mochiuti-x)
- * [Dayane Pires-Silva](https://github.com/dayanepires23)
- * [Thayanne Costa](https://github.com/Oncolthayanne)
-
-### Sp 2: Grupo _Cronobacter sakazakii_
-
-Coordenadora do grupo: Graduanda [Mylena Santos Moreira](https://github.com/MylenaSM) (Ciências Biológicas)
+Coordenadores do grupo: 
 
 Membros do subgrupo:
- * [Davi Xavier](https://github.com/davixavier528)
- * [Lara Vitória](https://github.com/larav1)
 
-### Sp 3: Grupo _Cronobacter dublinensis_
+### PanGeno
 
-Coordenador do grupo: Graduando [Afonso Martin Melazzo](https://github.com/afonsoufscar) (Biotecnologia, com ênfase em Genética e Biologia Molecular)
+Coordenadores do grupo: 
 
 Membros do subgrupo:
- * [Raquel Santos](https://github.com/arquels7)
- * [Geovana Daniel](https://github.com/geovanad)
 
-## Projetos anteriores
+### FASTAmantes
+
+Coordenadores do grupo: 
+
+Membros do subgrupo:
+
+
