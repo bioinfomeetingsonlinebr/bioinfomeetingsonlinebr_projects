@@ -18,7 +18,7 @@ print("Meu nome é Renato")
 
 ## Criar imagens
 
-![Tux, the image]()
+![Tux, the image](tux.png)
 
 # Exemplo de um relatório de análise de Bioinformática
 
