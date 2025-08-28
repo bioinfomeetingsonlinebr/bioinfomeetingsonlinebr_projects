@@ -1,0 +1,9 @@
+# Exemplo criação Rmarkdown
+
+Estou realizando minha primeira análise em R no Rmarkdown e o código abaixo foi utilizado, tirado do nada da cabeça do Renato:
+
+```{r}
+library(ggplot2)
+
+print("Hello world!")
+```
