@@ -144,13 +144,17 @@ Resumo dos dados importados:
 
 Para compreender a natureza das alterações genéticas presentes no gene TBL1XR1, foi realizada uma exploração inicial dos dados de mutações e de alterações no número de cópias gênicas (CNAs). Nesse contexto, os comandos unique(mut$TBL1XR1) e unique(cna$TBL1XR1) foram utilizados com o objetivo de identificar todos os valores distintos registrados para o gene em cada um dos conjuntos de dados.
 
+O comando unique(mut$TBL1XR1) permite listar os diferentes tipos de mutações observadas no gene TBL1XR1 entre os pacientes, excluindo valores repetidos. Dessa forma, é possível identificar quais variantes genéticas estão presentes.
+
 `unique(mut$TBL1XR1)`
 
-O comando unique(mut$TBL1XR1) permite listar os diferentes tipos de mutações observadas no gene TBL1XR1 entre os pacientes, excluindo valores repetidos. Dessa forma, é possível identificar quais variantes genéticas estão presentes.
+[![mutacoes.png](https://i.postimg.cc/YCH5sN7k/mutacoes.png)](https://postimg.cc/KR0pKM4s)
 
 Essa verificação revelou a presença de amostras classificadas como _wild-type (WT)_, registros com dados não disponíveis (NP) e um conjunto de mutações somáticas pontuais, incluindo substituições de aminoácidos e eventos de splicing. Entre as mutações identificadas, observaram-se alterações como A48S, D85H, H33R, Q264L, L387S, D232H, S422C, N353H, P452L, K276R, além de mutações múltiplas em uma mesma amostra (por exemplo, K374N/S202I e G505V/G505S) e um evento de splice-site (X256_splice).
 
 `unique(cna$TBL1XR1)`
+
+[![cna.png](https://i.postimg.cc/bNCn6gk1/cna.png)](https://postimg.cc/qzKgq8m7)
 
 Com relação as alterações no número de cópias, os valores identificados correspondem às diferentes categorias de estado de cópia gênica, incluindo deleção (–1), estado neutro (0), ganho de cópia (1), amplificação gênica (2), além de registros com dados não disponíveis (NP).
 
