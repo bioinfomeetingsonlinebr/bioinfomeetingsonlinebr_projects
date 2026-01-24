@@ -5,9 +5,9 @@
 
 **Agosto de 2025**
 
-## Introdução
+## 1. Introdução
 
-### Gene escolhido - SOX2
+### 1.1 Gene escolhido - SOX2
 
 _SRY-box transcription factor 2_
 
@@ -38,9 +38,9 @@ A desregulação da expressão do gene contribui para o desenvolvimento do cânc
 
 - Resistência a apoptose e terapias.
 
-## Metodologia
+## 2. Metodologia
 
-### 1. Fonte de dados
+### 2.1 Fonte de dados
 
 Os dados utilizados neste estudo foram obtidos a partir do [cBioPortal](https://www.cbioportal.org/) for Cancer Genomics.
 
@@ -52,7 +52,7 @@ A imagem abaixo ilustra a visão geral da plataforma:
 
 O conjunto selecionado foi o [Lung Squamous Cell Carcinoma (TCGA, Firehose Legacy)](https://www.cbioportal.org/study/summary?id=lusc_tcga), que reúne informações genômicas e clínicas de pacientes com carcinoma escamoso de pulmão. O gene SOX2 foi escolhido como foco da análise por apresentar a maior porcentagem de alterações no número de cópias (Copy Number Alterations - CNAs).
 
-### 2. Tipos de dados utilizados
+### 2.2 Tipos de dados utilizados
 
 Para a realização da análise, foram utilizados três principais tipos de dados, obtidos a partir do cBioPortal:
 
@@ -74,7 +74,7 @@ Formato: `.txt`
 
 Incluem mutações somáticas identificadas nos pacientes, permitindo avaliar a presença ou ausência de alterações no gene SOX2.
 
-### 3. Ferramentas utilizadas
+### 2.3 Ferramentas utilizadas
 
 **Linguagem de programação**:
 
@@ -92,7 +92,7 @@ Incluem mutações somáticas identificadas nos pacientes, permitindo avaliar a 
 
 - survminer
 
-#### 3.1 Instalação dos pacotes necessários
+#### 2.3.1 Instalação dos pacotes necessários
 
 ```
 # Instalação dos pacotes
@@ -114,7 +114,7 @@ library(survminer)
 
 ```
 
-#### 3.2 Importação dos dados
+#### 2.3.2 Importação dos dados
 
 Importação dos 3 conjuntos de dados:
 
@@ -124,9 +124,9 @@ cna <- read_tsv("cna_lung.txt")
 clin <- read_tsv("lusc_luad_clinical_data.tsv", comment = "#")
 ```
 
-#### 3.3 Processamento dos dados
+#### 2.3.4 Processamento dos dados
 
-Visualização inicial das colunas presentes nos dados clínicos:
+**Visualização inicial das colunas presentes nos dados clínicos**:
 
 ```
 # Visualização inicial
@@ -158,7 +158,138 @@ Essa verificação revelou a presença de amostras classificadas como _wild-type
 
 Com relação as alterações no número de cópias, os valores identificados correspondem às diferentes categorias de estado de cópia gênica, incluindo deleção (–1), estado neutro (0), ganho de cópia (1), amplificação gênica (2), além de registros com dados não disponíveis (NP).
 
-## Resultados
+#### 2.3.5 Seleção de pacientes com alterações no gene
+
+```
+com_amplificacao <- cna %>%
+  filter(TBL1XR1 == 2) %>%
+  mutate(mutation_type = "AMPLIFICACAO") %>%
+  select(SAMPLE_ID, mutation_type)
+
+mutados <- mut %>%
+  filter(!(TBL1XR1 %in% c("WT", "NP"))) %>%
+  mutate(mutation_type = "MUTACAO") %>%
+  select(SAMPLE_ID, mutation_type)
+
+dataset_mut <- bind_rows(com_amplificacao, mutados) %>%
+  distinct(SAMPLE_ID, .keep_all = TRUE)
+
+df_lung <- dataset_mut %>%
+  inner_join(clin, by = c("SAMPLE_ID" = "sampleId"))
+
+```
+
+## 3. Resultados
+
+### 3.1 Distribuição de pacientes por sexo
+
+```
+{r}
+table(clin$SEX, useNA = "no")
+
+clin %>%
+  filter(!is.na(SEX)) %>%
+  ggplot(aes(x = SEX, fill = SEX)) +
+  geom_bar() +
+  scale_fill_manual(values = c("Male" = "cyan4", "Female" = "darkseagreen")) +
+  labs(
+    title = "Distribuição de pacientes por sexo",
+    x = "Sexo",
+    y = "Número de pacientes",
+    fill = "Sexo"
+  ) +
+  theme_minimal()
+
+```
+
+[![Rplot.png](https://i.postimg.cc/gJywWq5y/Rplot.png)](https://postimg.cc/MMTZ0RzX)
+
+Conforme ilustrado no gráfico de distribuição por sexo, a coorte apresenta uma distribuição relativamente equilibrada entre os sexos, com discreto predomínio de pacientes do sexo masculino (240) em relação ao sexo feminino (210).
+
+### 3.2 Status vital dos pacientes
+
+```
+ggplot(clin %>% filter(!is.na(OS_STATUS)), aes(x = OS_STATUS, fill = OS_STATUS)) +
+  geom_bar() +
+  scale_fill_manual(values = c("1:DECEASED" = "firebrick", "0:LIVING" = "darkseagreen3")) +
+  labs(
+    title = "Status Vital dos Pacientes",
+    x = "Status",
+    y = "Número de Pacientes",
+    fill = "Status"
+  ) +
+  theme_minimal()
+```
+
+[![Status-vital.png](https://i.postimg.cc/gkLxcW15/Status-vital.png)](https://postimg.cc/5614pZ4q)
+
+### 3.3 Idade ao diagnóstico de câncer de pulmão
+
+Com o objetivo de caracterizar o perfil clínico da coorte estudada, foram realizadas análises estatísticas descritivas das variáveis idade ao diagnóstico (AGE) e tempo de sobrevida global em meses (OS_MONTHS). Essas análises permitem compreender a distribuição central e a dispersão dos dados clínicos, fornecendo uma visão geral da população avaliada
+
+`summary(clin$AGE)`
+
+`summary(clin$OS_MONTHS)`
+
+Para investigar a relação entre a idade ao diagnóstico e o tipo de alteração genética, foi construída uma visualização do tipo boxplot, comparando os grupos definidos como amplificação gênica e mutações do tipo SNVs. O gráfico foi gerado utilizando a biblioteca ggplot2, considerando a variável categórica mutation_type no eixo x e a variável contínua AGE no eixo y.
+
+```
+ggplot(df_lung, aes(x = mutation_type, y = AGE)) +
+  geom_boxplot(fill = "skyblue") +
+  labs(
+    title = "Box-plot: Idade ao diagnóstico por mutação",
+    x = "Tipo de mutação (Amplificação vs SNVs)",
+    y = "Idade ao diagnóstico"
+  ) +
+  theme_minimal()
+
+```
+
+[![Box-plot.png](https://i.postimg.cc/L8qw0yYV/Box-plot.png)](https://postimg.cc/JsLps5Qy)
+
+Conforme ilustrado no boxplot da idade ao diagnóstico estratificado por tipo de mutação, observa-se que pacientes com mutações do tipo SNVs apresentam uma mediana de idade ligeiramente superior em comparação aos pacientes com amplificação gênica. O grupo com amplificação apresenta maior dispersão dos valores de idade, indicando maior heterogeneidade etária no momento do diagnóstico, enquanto o grupo com mutações SNVs apresenta distribuição mais concentrada em torno da mediana.
+
+### 3.4 Análise de sobrevida
+
+Inicialmente, foi criada uma variável binária para representar o evento de interesse na análise de sobrevida. Pacientes com status vital registrado como óbito foram codificados como evento (1), enquanto os demais foram considerados censurados (0). Em seguida, foi construído o objeto de sobrevivência combinando o tempo de acompanhamento em meses com a ocorrência do evento.
+
+As curvas de sobrevida global foram então estimadas pelo método de Kaplan–Meier, estratificando os pacientes de acordo com o tipo de alteração no gene TBL1XR1 (amplificação ou mutação do tipo SNV). Essa abordagem permitiu comparar o comportamento da sobrevida entre os grupos ao longo do tempo.
+
+Por fim, as curvas foram representadas graficamente, incluindo os intervalos de confiança, a tabela do número de pacientes em risco e o valor de p do teste de log-rank, utilizado para avaliar possíveis diferenças estatísticas entre os grupos.
+
+```
+df_lung <- df_lung %>%
+  mutate(event = ifelse(OS_STATUS == "DECEASED", 1, 0))
+
+surv_obj <- Surv(time = df_lung$OS_MONTHS, event = df_lung$event)
+
+fit <- survfit(surv_obj ~ mutation_type, data = df_lung)
+
+ggsurvplot(
+  fit,
+  data = df_lung,
+  pval = TRUE,
+  risk.table = TRUE,
+  risk.table.y.text.col = TRUE,
+  risk.table.y.text = FALSE,
+  title = "TBL1XR1 e análise de sobrevida",
+  legend.title = "Tipo de mutação",
+  legend.labs = c("Amplificação", "SNV"),
+  palette = c("firebrick", "steelblue"),
+  font.main = c(12, "bold"),
+  font.x = c(9), font.y = c(9),
+  font.tickslab = c(9),
+  xlab = "Meses",
+  ylab = "Probabilidade de Sobrevivência",
+  conf.int = TRUE,
+  ggtheme = theme_minimal(base_size = 10)
+)
+
+```
+
+[![Sobrevida.png](https://i.postimg.cc/rsrRH2kZ/Sobrevida.png)](https://postimg.cc/XBnvZhX9)
+
+Com o número reduzido de pacientes e eventos, não foi possível detectar diferenças estatisticamente significativas na sobrevida global associadas ao tipo de mutação do TBL1XR1. As curvas de sobrevivência apresentaram comportamento semelhante ao longo do tempo, com elevado número de observações censuradas. É importante destacar o número reduzido de amostras utilizadas na geração do gráfico. Embora o conjunto de dados original contenha um número maior de pacientes, apenas uma fração apresenta amplificação gênica ou mutações somáticas nesse gene, limitando o tamanho dos grupos analisados.
 
 ## 📚 Referências
 
