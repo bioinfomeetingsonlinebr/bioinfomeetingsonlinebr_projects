@@ -52,29 +52,109 @@ A imagem abaixo ilustra a visão geral da plataforma:
 
 O conjunto selecionado foi o [Lung Squamous Cell Carcinoma (TCGA, Firehose Legacy)](https://www.cbioportal.org/study/summary?id=lusc_tcga), que reúne informações genômicas e clínicas de pacientes com carcinoma escamoso de pulmão. O gene SOX2 foi escolhido como foco da análise por apresentar a maior porcentagem de alterações no número de cópias (Copy Number Alterations - CNAs).
 
-Total de pacientes do estudo: 511 pacientes.
-
 ### 2. Tipos de dados utilizados
 
 Para a realização da análise, foram utilizados três principais tipos de dados, obtidos a partir do cBioPortal:
 
-(1) Dados clínicos
+**(1) Dados clínicos**
 
 Formato: `.tsv`
 
 Contêm informações demográficas, clínicas e de sobrevida dos pacientes.
 
-(2) Dados de alterações no número de cópias (CNAs)
+**(2) Dados de alterações no número de cópias (CNAs)**
 
 Formato: `.txt`
 
 Registram variações no número de cópias gênicas, possibilitando a identificação de pacientes com amplificação do gene SOX2, a alteração mais frequente observada neste estudo.
 
-(3) Dados de mutações somáticas (SNVs)
+**(3) Dados de mutações somáticas (SNVs)**
 
 Formato: `.txt`
 
 Incluem mutações somáticas identificadas nos pacientes, permitindo avaliar a presença ou ausência de alterações no gene SOX2.
+
+### 3. Ferramentas utilizadas
+
+**Linguagem de programação**:
+
+- R (versão 4.4.1)
+
+**Pacotes principais**:
+
+- tidyverse (v2.0.0)
+
+- dplyr (v1.1.4)
+
+- ggplot2 (v3.5.2)
+
+- survival
+
+- survminer
+
+#### 3.1 Instalação dos pacotes necessários
+
+```
+# Instalação dos pacotes
+
+if (!requireNamespace("tidyverse", quietly = TRUE)) {
+  install.packages("tidyverse")
+}
+if (!requireNamespace("survival", quietly = TRUE)) {
+  install.packages("survival")
+}
+if (!requireNamespace("survminer", quietly = TRUE)) {
+  install.packages("survminer")
+}
+
+library(tidyverse)
+library(survival)
+library(survminer)
+
+
+```
+
+#### 3.2 Importação dos dados
+
+Importação dos 3 conjuntos de dados:
+
+```
+mut <- read_tsv("mutations_lung.txt", comment = "#")
+cna <- read_tsv("cna_lung.txt")
+clin <- read_tsv("lusc_luad_clinical_data.tsv", comment = "#")
+```
+
+#### 3.3 Processamento dos dados
+
+Visualização inicial das colunas presentes nos dados clínicos:
+
+```
+# Visualização inicial
+
+colnames(clin)
+```
+
+[![colunas-dclinico.png](https://i.postimg.cc/DyzpNCJq/colunas-dclinico.png)](https://postimg.cc/RqjT6LTF)
+
+Resumo dos dados importados:
+
+- Mutações: 1.344 registros
+- CNAs: 1.344 registros
+- Dados clínicos: 500 pacientes, 39 variáveis
+
+Para compreender a natureza das alterações genéticas presentes no gene TBL1XR1, foi realizada uma exploração inicial dos dados de mutações e de alterações no número de cópias gênicas (CNAs). Nesse contexto, os comandos unique(mut$TBL1XR1) e unique(cna$TBL1XR1) foram utilizados com o objetivo de identificar todos os valores distintos registrados para o gene em cada um dos conjuntos de dados.
+
+`unique(mut$TBL1XR1)`
+
+O comando unique(mut$TBL1XR1) permite listar os diferentes tipos de mutações observadas no gene TBL1XR1 entre os pacientes, excluindo valores repetidos. Dessa forma, é possível identificar quais variantes genéticas estão presentes.
+
+Essa verificação revelou a presença de amostras classificadas como _wild-type (WT)_, registros com dados não disponíveis (NP) e um conjunto de mutações somáticas pontuais, incluindo substituições de aminoácidos e eventos de splicing. Entre as mutações identificadas, observaram-se alterações como A48S, D85H, H33R, Q264L, L387S, D232H, S422C, N353H, P452L, K276R, além de mutações múltiplas em uma mesma amostra (por exemplo, K374N/S202I e G505V/G505S) e um evento de splice-site (X256_splice).
+
+`unique(cna$TBL1XR1)`
+
+Com relação as alterações no número de cópias, os valores identificados correspondem às diferentes categorias de estado de cópia gênica, incluindo deleção (–1), estado neutro (0), ganho de cópia (1), amplificação gênica (2), além de registros com dados não disponíveis (NP).
+
+## Resultados
 
 ## 📚 Referências
 
