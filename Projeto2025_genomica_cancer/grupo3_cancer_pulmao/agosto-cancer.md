@@ -6,7 +6,9 @@
 
 ## Introdução
 
-### Gene escolhido - SOX2 (SRY-box transcription factor 2)
+### Gene escolhido - SOX2
+
+_SRY-box transcription factor 2_
 
 Foi escolhido devido a maior frequência de alteração no número de cópias do tipo amplificação
 
@@ -15,9 +17,11 @@ Foi escolhido devido a maior frequência de alteração no número de cópias do
 - Papel na emergência celular pluripotente na fase embrionária ⟶ ausência = letalidade do embrião;
 - Ao longo do desenvolvimento fetal impacta na diferenciação das células do Sistema Nervoso Central e Periférico.
 
-NOVAK, Daniel, et al.. SOX2 in development and cancer biology. Seminars in Cancer Biology, Alemanha, v. 67, n.1, p. 74-82, 2020. DOI: https://doi.org/10.1016/j.semcancer.2019.08.007.
+> 📖 **Referência**  
+> NOVAK, D. _et al._ **SOX2 in development and cancer biology**._Seminars in Cancer Biology_, v. 67, p. 74–82, 2020.  
+> DOI: https://doi.org/10.1016/j.semcancer.2019.08.007
 
-<br>
+---
 
 A desregulação da expressão do gene contribui para o desenvolvimento do câncer, pois o gene controla:
 
@@ -39,13 +43,17 @@ A desregulação da expressão do gene contribui para o desenvolvimento do cânc
 
 - Resistência a apoptose e terapias.
 
-<br>
-
 ## Metodologia
 
-Fonte de dados: Os dados utilizados neste estudo foram obtidos a partir do [cBioPortal](https://www.cbioportal.org/) for Cancer Genomics. A imagem ilustra a visão geral do cBioPortal.
+### 1. Fonte de dados
 
-[![visao-geral-do-c-Bio-Portal.png](https://i.postimg.cc/vZ3RnFdp/visao-geral-do-c-Bio-Portal.png)](https://postimg.cc/dhkSMf3B)
+Os dados utilizados neste estudo foram obtidos a partir do [cBioPortal](https://www.cbioportal.org/) for Cancer Genomics. O conjunto selecionado foi o [Lung Squamous Cell Carcinoma (TCGA, Firehose Legacy)](https://www.cbioportal.org/study/summary?id=lusc_tcga), que reúne informações genômicas e clínicas de pacientes com carcinoma escamoso de pulmão. O gene SOX2 foi escolhido como foco da análise por apresentar a maior porcentagem de alterações no número de cópias (Copy Number Alterations - CNAs).
+
+A imagem abaixo ilustra a visão geral da plataforma:
+
+<p align="center">
+  <img src="https://i.postimg.cc/vZ3RnFdp/visao-geral-do-c-Bio-Portal.png" width="600">
+</p>
 
 O conjunto selecionado foi o [Lung Squamous Cell Carcinoma (TCGA, Firehose Legacy)](https://www.cbioportal.org/study/summary?id=lusc_tcga), que reúne informações genômicas e clínicas de pacientes com carcinoma escamoso de pulmão. O gene SOX2 foi escolhido como foco da análise por apresentar a maior porcentagem de alterações no número de cópias (Copy Number Alterations - CNAs).
 
