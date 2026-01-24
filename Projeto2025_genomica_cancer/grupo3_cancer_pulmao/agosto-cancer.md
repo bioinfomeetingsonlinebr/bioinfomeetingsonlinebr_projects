@@ -1,6 +1,7 @@
 # Grupo 3 - Câncer de Pulmão (Fastamantes)
 
-![RStudio](https://img.shields.io/badge/RStudio-package)
+![R](https://img.shields.io/badge/RStudio-4.4.1-276DC3?logo=r&logoColor=white)
+![Status](https://img.shields.io/badge/status-concluído-brightgreen)
 
 **Agosto de 2025**
 
@@ -52,6 +53,28 @@ A imagem abaixo ilustra a visão geral da plataforma:
 O conjunto selecionado foi o [Lung Squamous Cell Carcinoma (TCGA, Firehose Legacy)](https://www.cbioportal.org/study/summary?id=lusc_tcga), que reúne informações genômicas e clínicas de pacientes com carcinoma escamoso de pulmão. O gene SOX2 foi escolhido como foco da análise por apresentar a maior porcentagem de alterações no número de cópias (Copy Number Alterations - CNAs).
 
 Total de pacientes do estudo: 511 pacientes.
+
+### 2. Tipos de dados utilizados
+
+Para a realização da análise, foram utilizados três principais tipos de dados, obtidos a partir do cBioPortal:
+
+(1) Dados clínicos
+
+Formato: `.tsv`
+
+Contêm informações demográficas, clínicas e de sobrevida dos pacientes.
+
+(2) Dados de alterações no número de cópias (CNAs)
+
+Formato: `.txt`
+
+Registram variações no número de cópias gênicas, possibilitando a identificação de pacientes com amplificação do gene SOX2, a alteração mais frequente observada neste estudo.
+
+(3) Dados de mutações somáticas (SNVs)
+
+Formato: `.txt`
+
+Incluem mutações somáticas identificadas nos pacientes, permitindo avaliar a presença ou ausência de alterações no gene SOX2.
 
 ## 📚 Referências
 
