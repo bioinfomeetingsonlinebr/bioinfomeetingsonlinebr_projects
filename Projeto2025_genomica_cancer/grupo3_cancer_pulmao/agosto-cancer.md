@@ -2,6 +2,8 @@
 
 ![RStudio](https://img.shields.io/badge/RStudio-package)
 
+**Agosto de 2025**
+
 ## Introdução
 
 ### Gene escolhido - SOX2 (SRY-box transcription factor 2)
@@ -38,3 +40,13 @@ A desregulação da expressão do gene contribui para o desenvolvimento do cânc
 - Resistência a apoptose e terapias.
 
 <br>
+
+## Metodologia
+
+Fonte de dados: Os dados utilizados neste estudo foram obtidos a partir do [cBioPortal](https://www.cbioportal.org/) for Cancer Genomics. A imagem ilustra a visão geral do cBioPortal.
+
+[![visao-geral-do-c-Bio-Portal.png](https://i.postimg.cc/vZ3RnFdp/visao-geral-do-c-Bio-Portal.png)](https://postimg.cc/dhkSMf3B)
+
+O conjunto selecionado foi o [Lung Squamous Cell Carcinoma (TCGA, Firehose Legacy)](https://www.cbioportal.org/study/summary?id=lusc_tcga), que reúne informações genômicas e clínicas de pacientes com carcinoma escamoso de pulmão. O gene SOX2 foi escolhido como foco da análise por apresentar a maior porcentagem de alterações no número de cópias (Copy Number Alterations - CNAs).
+
+Total de pacientes do estudo: 511 pacientes.
